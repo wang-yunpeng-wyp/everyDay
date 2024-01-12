@@ -45,7 +45,11 @@ public class Application {
 
 
         ArrayList<GirlFriend> girlFriends = new ArrayList<>();
+        String nextdata= "2024-02-05";//下次见面时间
+
+        wypFriend.setNextTime(nextdata);
         girlFriends.add(wypFriend);
+        zycFriend.setNextTime(nextdata);
         girlFriends.add(zycFriend);
 
         pushWx(girlFriends);
@@ -57,7 +61,6 @@ public class Application {
 
 
         for (GirlFriend girlFriend : list) {
-            String nextdata= "2024-02-05";//下次见面时间
             GirlFriend girlFriend1 = lunarTime(girlFriend);
 
             int bbb = 0;
