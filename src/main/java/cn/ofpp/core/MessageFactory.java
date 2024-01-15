@@ -36,7 +36,7 @@ public class MessageFactory {
         Integer time =  Integer.valueOf(format);
             
 
-            wxip = "IY1w4zjF5asLs7O9ecFuOt_bCG1T6JSyi8B6N3HhZGA";
+            wxip = "1w2vRlEREpFaY3zUT9Ou8oZjoCjzqVlnaap0nYTdWcA";
 
         return WxMpTemplateMessage.builder()
                 .url("http://slither.io/") // 点击后的跳转链接 可自行修改 也可以不填
