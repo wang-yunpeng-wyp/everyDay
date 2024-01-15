@@ -94,6 +94,15 @@ public class Application {
                 "2022-02-03",
                 "", "","");
 
+        GirlFriend fan = new GirlFriend("摄影师（樊大美女）",
+                "安阳市-滑县",
+                "半坡店乡",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5t3scWiV5hA88m-74CF-KGc",
+                "2022-02-03",
+                "", "","");
+
 
         ArrayList<GirlFriend> girlFriends = new ArrayList<>();
 
@@ -104,6 +113,7 @@ public class Application {
         girlFriends.add(han);
         girlFriends.add(jiu);
         girlFriends.add(wei);
+        girlFriends.add(fan);
 
         for (GirlFriend girlFriend : girlFriends) {
             weixin(girlFriend);
