@@ -29,3 +29,4 @@ jobs:
       - name: SendWxTemplateMsg
         run: sudo java -jar ./target/CareUEveryDay-1.0.0.jar
 #王云鹏 
+
