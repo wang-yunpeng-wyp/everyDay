@@ -59,17 +59,23 @@ public class Application {
         GirlFriend wen = new GirlFriend("司仪！",
                 "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5isJ4GTYVhxvOWNt5y6ao9A","2022-02-03","","","");
 
-
+        String nextdata= "2024-02-05";//下次见面时间
         ArrayList<GirlFriend> girlFriends = new ArrayList<>();
 
+        wypFriend.setNextTime(nextdata);
         girlFriends.add(wypFriend);
+        zycFriend.setNextTime(nextdata);
         girlFriends.add(zycFriend);
 
         pushWx(girlFriends);
 
+        han.setNextTime(nextdata);
         girlFriends.add(han);
+        xiao.setNextTime(nextdata);
         girlFriends.add(xiao);
+        jiu.setNextTime(nextdata);
         girlFriends.add(jiu);
+        wen.setNextTime(nextdata);
         girlFriends.add(wen);
 
     }
@@ -80,8 +86,7 @@ public class Application {
 
         for (GirlFriend girlFriend : list) {
             GirlFriend girlFriend1 = lunarTime(girlFriend);
-            String nextdata= "2024-02-05";//下次见面时间
-                girlFriend.setNextTime(nextdata);
+
             int bbb = 0;
             while (true){
                 try{
