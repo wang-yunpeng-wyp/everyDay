@@ -41,28 +41,41 @@ public class Application {
 
         //new 一个 女友
        GirlFriend zycFriend = new GirlFriend("我的宝儿,爱你！",
-               "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lY17LhWIOqwu5hMBnUKynY","2022-02-03","","","");
+               "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lY17LhWIOqwu5hMBnUKynY","2022-02-03",author,origin,content);
+        
+       // WxMpTemplateMessage wxMpTemplateMessage = MessageFactory.resolveMessage(zycFriend);
+        //下次见面时间
+        zycFriend.setNextTime(nextdata);
+        zycFriend = lunarTime(zycFriend);
+        int bb = 0;
+        while (true){
+            try{
 
-
-        ArrayList<GirlFriend> girlFriends = new ArrayList<>();
-        girlFriends.add(wypFriend);
-        girlFriends.add(zycFriend);
-
-        pushWx(girlFriends);
-
-    }
-
-    public static void  pushWx(List<GirlFriend> list){
-
-
-
-        for (GirlFriend girlFriend : list) {
-            String nextdata= "2024-02-05";//下次见面时间
-            GirlFriend girlFriend1 = lunarTime(girlFriend);
-
-            int bbb = 0;
-            while (true){
+                bb++;
+                Wx.sendTemplateMessage(MessageFactory.resolveMessage(zycFriend));
+                break;
+            }catch (Exception e){
+                System.out.println("宝贝微信失败;一共执行了 "+bb+" 次");
                 try{
+                    Thread.sleep(2000);
+                }catch (InterruptedException t){
+                    System.out.println("宝贝休息异常");
+                }
+            }
+
+        }
+
+                //给宝贝的再发给我一份
+       GirlFriend wypzyc = new GirlFriend("我的宝儿,爱你！",
+               "安阳市", "滑县", "1998-12-09", "2022-02-04", "oaiup5nPe2aGJ24Uc2nQI_sJK7Yw","2022-02-03",author,origin,content);
+        
+       // WxMpTemplateMessage wxMpTemplateMessage = MessageFactory.resolveMessage(wypzyc);
+        //下次见面时间
+        wypzyc.setNextTime(nextdata);
+        wypzyc = lunarTime(wypzyc);
+        int bbb = 0;
+        while (true){
+            try{
 
                     bbb++;
                     Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend1));
