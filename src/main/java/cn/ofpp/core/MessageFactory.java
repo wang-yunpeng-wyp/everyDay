@@ -32,18 +32,16 @@ public class MessageFactory {
 // 格式化时间 
 
  SimpleDateFormat sf = new SimpleDateFormat("HH");
-        String format = sf.format(today);
-        Integer time =  Integer.valueOf(format);
-            
 
-            wxip = "1w2vRlEREpFaY3zUT9Ou8oZjoCjzqVlnaap0nYTdWcA";
+            wxip = "2UPd5pZ2EgBj7f6BaHpLOgYfSVaZR-zJUzlTN6nSd6A";
 
-        return WxMpTemplateMessage.builder()
+        WxMpTemplateMessage build = WxMpTemplateMessage.builder()
                 .url("http://slither.io/") // 点击后的跳转链接 可自行修改 也可以不填
                 .toUser(friend.getUserId())
-                .templateId(StrUtil.emptyToDefault(friend.getTemplateId(),wxip))
+                .templateId(StrUtil.emptyToDefault(friend.getTemplateId(), wxip))
                 .data(buildData(friend))
                 .build();
+        return build;
     }
 
     private static List<WxMpTemplateData> buildData(Friend friend) {
@@ -56,9 +54,9 @@ public class MessageFactory {
             System.out.println("获取古诗接口失败！！！");
         }
         ArrayList list = new ArrayList();
-         list.add( TemplateDataBuilder.builder().name("str").value( " 职位："+friend.getFullName()).color(cor()).build() );
+        list.add( TemplateDataBuilder.builder().name("str").value( " 职位："+friend.getFullName()).color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("taryIt").value(friend.getTaryIt()).color(cor()).build() );
-        list.add( TemplateDataBuilder.builder().name("friendName").value("今天也要元气满满哟!! ").color(cor()).build() );
+        list.add( TemplateDataBuilder.builder().name("friendName").value("今天也要元气满满哟 ").color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("howOld").value("祝大家开心每一天").color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("nextTime").value(friend.getNextTime()).color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("howLongLived").value(friend.getHowLongLived()).color(cor()).build() );

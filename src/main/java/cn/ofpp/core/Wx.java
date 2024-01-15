@@ -1,6 +1,7 @@
 package cn.ofpp.core;
 
 import cn.ofpp.Bootstrap;
+import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.api.WxMpTemplateMsgService;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
@@ -40,12 +41,15 @@ public class Wx {
 
     public static void sendTemplateMessage(WxMpTemplateMessage message) {
         getTemplateMsgService().ifPresent(service -> {
+
             try {
-                 service.sendTemplateMsg(message);
-            } catch (Exception e) {
-               
+                String s = service.sendTemplateMsg(message);
+            } catch (WxErrorException e) {
+                throw new RuntimeException(e);
             }
+
         });
+
 
     }
 

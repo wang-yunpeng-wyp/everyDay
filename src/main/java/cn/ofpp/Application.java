@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -35,82 +34,114 @@ public class Application {
      */
     public static void main(String[] args) {
 
+
+        Bootstrap.init();
         // new 一个 女友
-        GirlFriend wypFriend = new GirlFriend("准新郎！",
-                "北京市", "顺义区", "1998-03-10", "2022-02-04", "oaiup5nPe2aGJ24Uc2nQI_sJK7Yw","2022-02-03","","","");
+        GirlFriend wang = new GirlFriend("准新郎",
+                "北京市",
+                "顺义区",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5nPe2aGJ24Uc2nQI_sJK7Yw",
+                "2022-02-03",
+                "", "","");
 
-        //new 一个 女友
-        GirlFriend zycFriend = new GirlFriend("准新娘！",
-                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lY17LhWIOqwu5hMBnUKynY","2022-02-03","","","");
+        GirlFriend zhang = new GirlFriend("准新娘",
+                "安阳市-滑县",
+                "半坡店乡",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5lY17LhWIOqwu5hMBnUKynY",
+                "2022-02-03",
+                "", "","");
 
-        //new 一个 韩小宁子
-        GirlFriend han = new GirlFriend("摄影师！",
-                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5qYRTi9qjwXDN_Yee6lAi7E","2022-02-03","","","");
+        GirlFriend wei = new GirlFriend("司仪（魏大帅哥）",
+                "安阳市-滑县",
+                "半坡店乡",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5isJ4GTYVhxvOWNt5y6ao9A",
+                "2022-02-03",
+                "", "","");
 
-        //new 一个 小木马
-        GirlFriend xiao = new GirlFriend("摄影师！",
-                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lm6bBKzvX1kCrilg9hGcjA","2022-02-03","","","");
 
-        //new 一个 九千七
-        GirlFriend jiu = new GirlFriend("摄影师！",
-                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5vkEoWFYMyilyDiK_0Eq6zw","2022-02-03","","","");
+        GirlFriend jiu = new GirlFriend("场控（张大帅哥）",
+                "安阳市-滑县",
+                "半坡店乡",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5vkEoWFYMyilyDiK_0Eq6zw",
+                "2022-02-03",
+                "", "","");
 
-        //new 一个 温馨 为心
-        GirlFriend wen = new GirlFriend("司仪！",
-                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5isJ4GTYVhxvOWNt5y6ao9A","2022-02-03","","","");
 
-        String nextdata= "2024-02-05";//下次见面时间
+        GirlFriend han = new GirlFriend("摄影师（韩大美女）",
+                "安阳市-滑县",
+                "半坡店乡",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5qYRTi9qjwXDN_Yee6lAi7E",
+                "2022-02-03",
+                "", "","");
+
+
+        GirlFriend xiao = new GirlFriend("摄影师（张大美女）",
+                "安阳市-滑县",
+                "半坡店乡",
+                "1998-03-10",
+                "2022-02-04",
+                "oaiup5lm6bBKzvX1kCrilg9hGcjA",
+                "2022-02-03",
+                "", "","");
+
+
         ArrayList<GirlFriend> girlFriends = new ArrayList<>();
 
-        wypFriend.setNextTime(nextdata);
-        girlFriends.add(wypFriend);
-        zycFriend.setNextTime(nextdata);
-        girlFriends.add(zycFriend);
+        girlFriends.add(wang);
+        girlFriends.add(zhang);
 
-        pushWx(girlFriends);
-
-        han.setNextTime(nextdata);
-        girlFriends.add(han);
-        xiao.setNextTime(nextdata);
         girlFriends.add(xiao);
-        jiu.setNextTime(nextdata);
+        girlFriends.add(han);
         girlFriends.add(jiu);
-        wen.setNextTime(nextdata);
-        girlFriends.add(wen);
+        girlFriends.add(wei);
 
-    }
-
-    public static void  pushWx(List<GirlFriend> list){
-
-
-
-        for (GirlFriend girlFriend : list) {
-            GirlFriend girlFriend1 = lunarTime(girlFriend);
-
-            int bbb = 0;
-            while (true){
-                try{
-
-                    bbb++;
-                    Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend1));
-                    break;
-                }catch (Exception e){
-                    System.out.println("宝贝微信失败;一共执行了 "+bbb+" 次");
-                    try{
-                        Thread.sleep(2000);
-                    }catch (InterruptedException t){
-                        System.out.println("宝贝休息异常");
-                    }
-                }
-
-            }
+        for (GirlFriend girlFriend : girlFriends) {
+            weixin(girlFriend);
         }
 
 
+        System.err.println("发送成功");
 
 
     }
 
+    public static void weixin(GirlFriend  wypFriend){
+
+        String nextdata= "2024-02-05";//下次见面时间
+
+        //下次见面时间
+        wypFriend.setNextTime(nextdata);
+        wypFriend = lunarTime(wypFriend);
+
+
+        int wyp = 0;
+        while (true){
+            try{
+                wyp++;
+                Wx.sendTemplateMessage(MessageFactory.resolveMessage(wypFriend));
+                break;
+            }catch (Exception e){
+
+                System.out.println("王云鹏微信失败;一共执行了 "+wyp+" 次");
+                try{
+                    Thread.sleep(2000);
+                }catch (InterruptedException t){
+                    System.out.println("王云鹏休息异常");
+                }
+            }
+
+        }
+    }
 
 
     public static GirlFriend lunarTime (GirlFriend friend){
