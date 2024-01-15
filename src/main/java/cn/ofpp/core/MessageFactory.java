@@ -56,7 +56,7 @@ public class MessageFactory {
             System.out.println("获取古诗接口失败！！！");
         }
         ArrayList list = new ArrayList();
-         list.add( TemplateDataBuilder.builder().name("str").value("").color(cor()).build() );
+         list.add( TemplateDataBuilder.builder().name("str").value( " 职位："+friend.getFullName()).color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("taryIt").value(friend.getTaryIt()).color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("friendName").value("今天也要元气满满哟!! ").color(cor()).build() );
         list.add( TemplateDataBuilder.builder().name("howOld").value("祝大家开心每一天").color(cor()).build() );

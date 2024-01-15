@@ -36,46 +36,55 @@ public class Application {
     public static void main(String[] args) {
 
         // new 一个 女友
-        GirlFriend wypFriend = new GirlFriend("我的宝儿",
+        GirlFriend wypFriend = new GirlFriend("准新郎！",
                 "北京市", "顺义区", "1998-03-10", "2022-02-04", "oaiup5nPe2aGJ24Uc2nQI_sJK7Yw","2022-02-03","","","");
 
         //new 一个 女友
-       GirlFriend zycFriend = new GirlFriend("我的宝儿,爱你！",
-               "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lY17LhWIOqwu5hMBnUKynY","2022-02-03",author,origin,content);
-        
-       // WxMpTemplateMessage wxMpTemplateMessage = MessageFactory.resolveMessage(zycFriend);
-        //下次见面时间
-        zycFriend.setNextTime(nextdata);
-        zycFriend = lunarTime(zycFriend);
-        int bb = 0;
-        while (true){
-            try{
+        GirlFriend zycFriend = new GirlFriend("准新娘！",
+                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lY17LhWIOqwu5hMBnUKynY","2022-02-03","","","");
 
-                bb++;
-                Wx.sendTemplateMessage(MessageFactory.resolveMessage(zycFriend));
-                break;
-            }catch (Exception e){
-                System.out.println("宝贝微信失败;一共执行了 "+bb+" 次");
+        //new 一个 韩小宁子
+        GirlFriend han = new GirlFriend("摄影师！",
+                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5qYRTi9qjwXDN_Yee6lAi7E","2022-02-03","","","");
+
+        //new 一个 小木马
+        GirlFriend xiao = new GirlFriend("摄影师！",
+                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5lm6bBKzvX1kCrilg9hGcjA","2022-02-03","","","");
+
+        //new 一个 九千七
+        GirlFriend jiu = new GirlFriend("摄影师！",
+                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5vkEoWFYMyilyDiK_0Eq6zw","2022-02-03","","","");
+
+        //new 一个 温馨 为心
+        GirlFriend wen = new GirlFriend("司仪！",
+                "安阳市", "滑县-半坡店", "1998-12-09", "2022-02-04", "oaiup5isJ4GTYVhxvOWNt5y6ao9A","2022-02-03","","","");
+
+
+        ArrayList<GirlFriend> girlFriends = new ArrayList<>();
+
+        girlFriends.add(wypFriend);
+        girlFriends.add(zycFriend);
+
+        pushWx(girlFriends);
+
+        girlFriends.add(han);
+        girlFriends.add(xiao);
+        girlFriends.add(jiu);
+        girlFriends.add(wen);
+
+    }
+
+    public static void  pushWx(List<GirlFriend> list){
+
+
+
+        for (GirlFriend girlFriend : list) {
+            GirlFriend girlFriend1 = lunarTime(girlFriend);
+            String nextdata= "2024-02-05";//下次见面时间
+                girlFriend.setNextTime(nextdata);
+            int bbb = 0;
+            while (true){
                 try{
-                    Thread.sleep(2000);
-                }catch (InterruptedException t){
-                    System.out.println("宝贝休息异常");
-                }
-            }
-
-        }
-
-                //给宝贝的再发给我一份
-       GirlFriend wypzyc = new GirlFriend("我的宝儿,爱你！",
-               "安阳市", "滑县", "1998-12-09", "2022-02-04", "oaiup5nPe2aGJ24Uc2nQI_sJK7Yw","2022-02-03",author,origin,content);
-        
-       // WxMpTemplateMessage wxMpTemplateMessage = MessageFactory.resolveMessage(wypzyc);
-        //下次见面时间
-        wypzyc.setNextTime(nextdata);
-        wypzyc = lunarTime(wypzyc);
-        int bbb = 0;
-        while (true){
-            try{
 
                     bbb++;
                     Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend1));
