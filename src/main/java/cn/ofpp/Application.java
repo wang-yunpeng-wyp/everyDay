@@ -127,7 +127,7 @@ public class Application {
 
     public static void weixin(GirlFriend  wypFriend){
 
-        String nextdata= "2024-02-02";//下次见面时间
+        String nextdata= "2024-02-18";//下次见面时间
 
         //下次见面时间
         wypFriend.setNextTime(nextdata);
